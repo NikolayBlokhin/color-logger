@@ -29,7 +29,6 @@ class ColorLogger(object):
         self.logger.setLevel(logging.DEBUG)
         self.logger.propagate = False
         self.logger.addHandler(handler)
-        # self.logger_udp.addHandler(console_handler)
 
     def get_rotation_handler(log_file_name):
         rotating_handler = logging.handlers.RotatingFileHandler(
