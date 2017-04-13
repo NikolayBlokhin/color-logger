@@ -6,7 +6,6 @@ import logging.handlers
 from termcolor import cprint
 
 
-
 class ColorLogger(object):
     """
     Write log messages to console (with any colors and
@@ -27,13 +26,13 @@ class ColorLogger(object):
                 '%Y.%m.%d %H:%M:%S',
             )
 
-            handler = get_rotation_handler(log_file_name)
+            handler = self.get_rotation_handler(log_file_name)
             self.logger = logging.getLogger(logger_name)
             self.logger.setLevel(logging.DEBUG)
             self.logger.propagate = False
             self.logger.addHandler(handler)
 
-    def get_rotation_handler(log_file_name):
+    def get_rotation_handler(self, log_file_name):
         rotating_handler = logging.handlers.RotatingFileHandler(
             log_file_name,
             maxBytes=3145728,   # 3Mb
@@ -47,5 +46,4 @@ class ColorLogger(object):
         cprint(message, color, background, attrs=attrs)    # write to console
         if self.logger:
             self.logger.debug(message)                     # write to file
-
 
